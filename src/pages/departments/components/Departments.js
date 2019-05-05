@@ -1,6 +1,7 @@
 import { connect } from 'dva';
 import { Table, Pagination, Popconfirm, Button } from 'antd';
 import { routerRedux } from 'dva/router';
+import 'antd/dist/antd.css';
 import styles from './Departments.css';
 import { PAGE_SIZE } from '../constants';
 import DepartmentModel from './DepartmentModel';
@@ -46,30 +47,81 @@ function Departments({ dispatch, list: dataSource, loading, total, page: current
 
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: '签约事业部*',
+      dataIndex: '签约事业部*',
+      width: 100,
+      key: '签约事业部*',
+      fixed: 'left',
       render: (text, record) => (
        <a onClick={getHandler.bind(null, record.id)}>{text}</a>
       ),
     },
     {
-      title: 'Status',
-      dataIndex: 'status',
-      key: 'status',
+      title: '客户名称*',
+      dataIndex: '客户名称*',
+      width: 100,
+      key: '客户名称*',
     }, {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
+      title: '合同金额*',
+      dataIndex: '合同金额*',
+      width: 100,
+      key: '合同金额*',
     },
     {
-      title: 'Organization',
-      dataIndex: 'organization.name',
-      key: 'organization.name',
+      title: '签约教室间数',
+      dataIndex: '签约教室间数',
+      width: 100,
+      key: '签约教室间数',
+    },{
+      title: '签订日期*',
+      dataIndex: '签订日期*',
+      width: 100,
+      key: '签订日期*',
+    },{
+      title: '合同状态*',
+      dataIndex: '合同状态*',
+      width: 100,
+      key: '合同状态*',
+    },{
+      title: '签订人*',
+      dataIndex: '签订人*',
+      width: 100,
+      key: '签订人*',
+    },{
+      title: '是否付款',
+      dataIndex: '是否付款',
+      width: 100,
+      key: '是否付款',
+    },{
+      title: '付款日期',
+      dataIndex: '付款日期',
+      width: 100,
+      key: '付款日期',
+    },{
+      title: '机构开课学期',
+      dataIndex: '机构开课学期',
+      width: 100,
+      key: '机构开课学期',
+    },{
+      title: '机构开课年份',
+      dataIndex: '机构开课年份',
+      width: 100,
+      key: '机机构开课年份',
+    },{
+      title: '省',
+      dataIndex: '省',
+      width: 50,
+      key: '省',
+    },{
+      title: '市',
+      dataIndex: '市',
+      width: 50,
+      key: '市',
     },
     {
       title: 'Operation',
       key: 'operation',
+      width: 100,
       render: (text, record) => (
         <span className={styles.operation}>
           <DepartmentModel record={record} onOk={editHandler.bind(null, record.id)}>
@@ -80,6 +132,7 @@ function Departments({ dispatch, list: dataSource, loading, total, page: current
           </Popconfirm>
         </span>
       ),
+      fixed: 'right',
     },
   ];
 
@@ -95,9 +148,11 @@ function Departments({ dispatch, list: dataSource, loading, total, page: current
           loading={loading}
           columns={columns}
           dataSource={dataSource}
+          scroll={{ x: 1100, y: 300 }}
           rowKey={record => record.id}
           pagination={false}
         />
+
         <Pagination
           className="ant-table-pagination"
           total={total}
