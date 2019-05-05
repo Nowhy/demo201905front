@@ -35,7 +35,13 @@ export default {
       yield put({ type: 'fetch', payload: { page } });
     },
     *patch({ payload: { id, values } }, { call, put, select }) {
-      yield call(departmentsService.patch, id, values);
+      try{
+        console.log('11wwwww1');
+        const res = yield call(departmentsService.patch, id, values);
+        console.log('111', res);
+      }catch(err){
+        message.error(err.message);
+      }
       const page = yield select(state => state.departments.page);
       yield put({ type: 'fetch', payload: { page } });
     },
