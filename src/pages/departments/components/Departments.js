@@ -50,7 +50,6 @@ function Departments({ dispatch, list: dataSource, loading, total, page: current
       title: '签约事业部*',
       dataIndex: '签约事业部*',
       key: '签约事业部*',
-      width: 120,
       render: (text, record) => (
        <a onClick={getHandler.bind(null, record.id)}>{text}</a>
       ),
@@ -58,68 +57,58 @@ function Departments({ dispatch, list: dataSource, loading, total, page: current
     {
       title: '客户名称*',
       dataIndex: '客户名称*',
-      width: 100,
       key: '客户名称*',
     }, {
       title: '合同金额*',
       dataIndex: '合同金额*',
-      width: 100,
       key: '合同金额*',
     },
     {
       title: '签约教室间数',
       dataIndex: '签约教室间数',
-      width: 120,
       key: '签约教室间数',
     },{
       title: '签订日期*',
       dataIndex: '签订日期*',
-      width: 100,
       key: '签订日期*',
     },{
       title: '合同状态*',
       dataIndex: '合同状态*',
-      width: 100,
       key: '合同状态*',
     },{
       title: '签订人*',
       dataIndex: '签订人*',
-      width: 100,
       key: '签订人*',
     },{
       title: '是否付款',
       dataIndex: '是否付款',
-      width: 100,
       key: '是否付款',
     },{
       title: '付款日期',
       dataIndex: '付款日期',
-      width: 200,
       key: '付款日期',
     },{
       title: '机构开课学期',
       dataIndex: '机构开课学期',
-      width: 120,
       key: '机构开课学期',
     },{
       title: '机构开课年份',
       dataIndex: '机构开课年份',
-      width: 120,
       key: '机机构开课年份',
     },{
       title: '省',
       dataIndex: '省',
-      width: 100,
       key: '省',
     },{
       title: '市',
       dataIndex: '市',
-      width: 100,
       key: '市',
     },
     {
       title: 'Operation',
       key: 'operation',
+      fixed: 'right',
+      width: 100,
       render: (text, record) => (
         <span className={styles.operation}>
           <DepartmentModel record={record} onOk={editHandler.bind(null, record.id)}>
@@ -130,7 +119,6 @@ function Departments({ dispatch, list: dataSource, loading, total, page: current
           </Popconfirm>
         </span>
       ),
-      fixed: 'right',
     },
   ];
 
@@ -142,12 +130,12 @@ function Departments({ dispatch, list: dataSource, loading, total, page: current
             <Button type="primary">Create departments</Button>
           </DepartmentModel>
         </div>
-        <Table
+        <Table className={styles.tab}
           loading={loading}
           columns={columns}
           dataSource={dataSource}
-          scroll={{ x: 1600, y:  1900}}
           rowKey={record => record.id}
+          scroll={{ x: 100 }}
           pagination={false}
         />
 

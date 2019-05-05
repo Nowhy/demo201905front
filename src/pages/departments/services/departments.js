@@ -22,7 +22,7 @@ export function remove(id) {
 
 export function patch(id, values) {
   return request(`/api/departments/${id}`, {
-    method: 'PATCH',
+    method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(values),
   });

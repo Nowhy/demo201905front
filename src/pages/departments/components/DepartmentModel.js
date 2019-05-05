@@ -52,7 +52,7 @@ class DepartmentEditModal extends Component {
           { children }
         </span>
         <Modal
-          title="添加新的机构"
+          title="Update"
           visible={this.state.visible}
           onOk={this.okHandler}
           onCancel={this.hideModelHandler}
@@ -64,7 +64,7 @@ class DepartmentEditModal extends Component {
             >
               {
                 getFieldDecorator('签约事业部*', {
-                  initialValue: '',
+                  initialValue: this.props.record['签约事业部*'],
                 })(<Input />)
               }
             </FormItem>
@@ -74,7 +74,7 @@ class DepartmentEditModal extends Component {
             >
               {
                 getFieldDecorator('客户名称*', {
-                  initialValue: '',
+                  initialValue: this.props.record['客户名称*'],
                 })(<Input />)
               }
             </FormItem>
@@ -84,7 +84,7 @@ class DepartmentEditModal extends Component {
             >
               {
                 getFieldDecorator('合同金额*', {
-                  initialValue: '',
+                  initialValue: this.props.record['合同金额*'],
                 })(<Input />)
               }
             </FormItem>
@@ -94,7 +94,7 @@ class DepartmentEditModal extends Component {
             >
               {
                 getFieldDecorator('签约教室间数', {
-                  initialValue: '',
+                  initialValue: this.props.record['签约教室间数'],
                 })(<Input />)
               }
             </FormItem>
@@ -104,7 +104,7 @@ class DepartmentEditModal extends Component {
             >
               {
                 getFieldDecorator('签订日期*', {
-                  initialValue: '',
+                  initialValue: this.props.record['签订日期*'],
                 })(<Input />)
               }
             </FormItem>
@@ -114,7 +114,7 @@ class DepartmentEditModal extends Component {
             >
               {
                 getFieldDecorator('合同状态*', {
-                  initialValue: '',
+                  initialValue: this.props.record['合同状态*'],
                 })(<Input />)
               }
             </FormItem>
@@ -124,7 +124,7 @@ class DepartmentEditModal extends Component {
             >
               {
                 getFieldDecorator('签订人*', {
-                  initialValue: '',
+                  initialValue: this.props.record['签订人*'],
                 })(<Input />)
               }
             </FormItem>
@@ -134,7 +134,7 @@ class DepartmentEditModal extends Component {
             >
               {
                 getFieldDecorator('是否付款', {
-                  initialValue: '',
+                  initialValue: this.props.record['是否付款'],
                 })(<Input />)
               }
             </FormItem>
@@ -144,7 +144,7 @@ class DepartmentEditModal extends Component {
             >
               {
                 getFieldDecorator('付款日期', {
-                  initialValue: '',
+                  initialValue: this.props.record['付款日期'],
                 })(<Input />)
               }
             </FormItem>
@@ -154,7 +154,7 @@ class DepartmentEditModal extends Component {
             >
               {
                 getFieldDecorator('机构开课学期', {
-                  initialValue: '',
+                  initialValue: this.props.record['机构开课学期'],
                 })(<Input />)
               }
             </FormItem>
@@ -164,7 +164,7 @@ class DepartmentEditModal extends Component {
             >
               {
                 getFieldDecorator('机构开课年份', {
-                  initialValue: '',
+                  initialValue: this.props.record['机构开课年份'],
                 })(<Input />)
               }
             </FormItem>
@@ -174,7 +174,7 @@ class DepartmentEditModal extends Component {
             >
               {
                 getFieldDecorator('省', {
-                  initialValue: '',
+                  initialValue: this.props.record['省'],
                 })(<Input />)
               }
             </FormItem>
@@ -184,7 +184,7 @@ class DepartmentEditModal extends Component {
             >
               {
                 getFieldDecorator('市', {
-                  initialValue: '',
+                  initialValue: this.props.record['市'],
                 })(<Input />)
               }
             </FormItem>
