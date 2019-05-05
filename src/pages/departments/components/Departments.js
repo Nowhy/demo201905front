@@ -1,36 +1,36 @@
 import { connect } from 'dva';
 import { Table, Pagination, Popconfirm, Button } from 'antd';
 import { routerRedux } from 'dva/router';
-import styles from './Organizations.css';
+import styles from './Departments.css';
 import { PAGE_SIZE } from '../constants';
-import OrganModel from './organizationModel';
+import DepartmentModel from './DepartmentModel';
 
-function Organizations({ dispatch, list: dataSource, loading, total, page: current }) {
+function Departments({ dispatch, list: dataSource, loading, total, page: current }) {
 
   function deleteHandler(id) {
     dispatch({
-      type: 'organizations/remove',
+      type: 'departments/remove',
       payload: id,
     });
   }
 
   function pageChangeHandler(page) {
     dispatch(routerRedux.push({
-      pathname: '/organizations',
+      pathname: '/departments',
       query: { page },
     }));
   }
 
   function editHandler(id, values) {
     dispatch({
-      type: 'organizations/patch',
+      type: 'departments/patch',
       payload: { id, values },
     });
   }
 
   function createHandler(values) {
     dispatch({
-      type: 'organizations/post',
+      type: 'departments/post',
       'content-type': 'application/json',
       payload: values,
     });
@@ -38,7 +38,7 @@ function Organizations({ dispatch, list: dataSource, loading, total, page: curre
 
   function getHandler(id) {
     dispatch({
-      type: 'organizations/get',
+      type: 'departments/get',
       'content-type': 'application/json',
       payload: id,
     });
@@ -54,31 +54,27 @@ function Organizations({ dispatch, list: dataSource, loading, total, page: curre
       ),
     },
     {
-      title: 'Province',
-      dataIndex: 'province',
-      key: 'province',
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
     }, {
-      title: 'City',
-      dataIndex: 'city',
-      key: 'city',
-    }, {
-      title: 'Town',
-      dataIndex: 'town',
-      key: 'town',
+      title: 'Address',
+      dataIndex: 'address',
+      key: 'address',
     },
     {
-      title: 'Rooms',
-      dataIndex: 'room.name',
-      key: 'room.name',
+      title: 'Organization',
+      dataIndex: 'organization.name',
+      key: 'organization.name',
     },
     {
       title: 'Operation',
       key: 'operation',
       render: (text, record) => (
         <span className={styles.operation}>
-          <OrganModel record={record} onOk={editHandler.bind(null, record.id)}>
+          <DepartmentModel record={record} onOk={editHandler.bind(null, record.id)}>
             <a>Edit</a>
-          </OrganModel>
+          </DepartmentModel>
           <Popconfirm title="Confirm to delete?" onConfirm={deleteHandler.bind(null, record.id)}>
             <a href="">Delete</a>
           </Popconfirm>
@@ -91,9 +87,9 @@ function Organizations({ dispatch, list: dataSource, loading, total, page: curre
     <div className={styles.normal}>
       <div>
         <div className={styles.post}>
-          <OrganModel record={{}} onOk={createHandler}>
-            <Button type="primary">Create Organization</Button>
-          </OrganModel>
+          <DepartmentModel record={{}} onOk={createHandler}>
+            <Button type="primary">Create departments</Button>
+          </DepartmentModel>
         </div>
         <Table
           loading={loading}
@@ -115,13 +111,13 @@ function Organizations({ dispatch, list: dataSource, loading, total, page: curre
 }
 
 function mapStateToProps(state) {
-  const { list, total, page } = state.organizations;
+  const { list, total, page } = state.departments;
   return {
     list,
     total,
     page,
-    loading: state.loading.models.organizations,
+    loading: state.loading.models.departments,
   };
 }
 
-export default connect(mapStateToProps)(Organizations);
+export default connect(mapStateToProps)(Departments);

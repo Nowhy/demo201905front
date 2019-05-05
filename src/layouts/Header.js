@@ -11,8 +11,8 @@ function Header({ location }) {
       <Menu.Item key="/">
         <Link to="/"><Icon type="home" />Home</Link>
       </Menu.Item>
-      <Menu.Item key="/organizations">
-        <Link to="/organizations"><Icon type="bars" />Organizations</Link>
+      <Menu.Item key="/departments">
+        <Link to="/departments"><Icon type="bars" />Departments</Link>
       </Menu.Item>
       <Menu.Item key="/rooms">
         <Link to="/rooms"><Icon type="bars" />Rooms</Link>

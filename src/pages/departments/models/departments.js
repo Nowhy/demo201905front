@@ -1,8 +1,8 @@
-import * as organizationsService from '../services/organizations';
+import * as departmentsService from '../services/departments';
 import { message } from 'antd';
 
 export default {
-  namespace: 'organizations',
+  namespace: 'departments',
   state: {
     list: [],
     total: null,
@@ -16,7 +16,7 @@ export default {
   },
   effects: {
     *fetch({ payload: { page = 1 } }, { call, put }) {
-        const { data, headers} = yield call(organizationsService.fetch, { page });
+        const { data, headers} = yield call(departmentsService.fetch, { page });
         yield put({
           type: 'save',
           payload: {
@@ -27,33 +27,33 @@ export default {
         });
     },
     *get({ payload: id }, { call }) {
-      yield call(organizationsService.get, id);
+      yield call(departmentsService.get, id);
     },
     *remove({ payload: id }, { call, put, select }) {
-      yield call(organizationsService.remove, id);
-      const page = yield select(state => state.organizations.page);
+      yield call(departmentsService.remove, id);
+      const page = yield select(state => state.departments.page);
       yield put({ type: 'fetch', payload: { page } });
     },
     *patch({ payload: { id, values } }, { call, put, select }) {
-      yield call(organizationsService.patch, id, values);
-      const page = yield select(state => state.organizations.page);
+      yield call(departmentsService.patch, id, values);
+      const page = yield select(state => state.departments.page);
       yield put({ type: 'fetch', payload: { page } });
     },
     *post({ payload: values }, { call, put, select }) {
       try{
-      yield call(organizationsService.post, values);
+      yield call(departmentsService.post, values);
     }
     catch (err){
       message.error(err.message);
     }
-    const page = yield select(state => state.organizations.page);
+    const page = yield select(state => state.departments.page);
     yield put({ type: 'fetch', payload: { page } });
     },
   },
   subscriptions: {
     setup({ dispatch, history }) {
       return history.listen(({ pathname, query }) => {
-        if (pathname === '/organizations') {
+        if (pathname === '/departments') {
           dispatch({ type: 'fetch', payload: query });
         }
       });
